@@ -3,19 +3,25 @@
   <a class="navbar-brand" href="/"><i class="far fa-sticky-note mr-1"></i>Eat Have Fun</a>
 
   <ul class="navbar-nav ml-auto">
-
+    @guest
     <li class="nav-item d-none d-sm-block">
-      <a class="nav-link" href="">ユーザー登録</a>
+      <a class="nav-link" href="{{ route('register') }}">ユーザー登録</a>
     </li>
+    @endguest
 
+    @guest
     <li class="nav-item d-none d-sm-block">
       <a class="nav-link" href="">ログイン</a>
     </li>
+    @endguest
 
+    @auth
     <li class="nav-item d-none d-sm-block">
       <a class="nav-link" href=""><i class="fas fa-pen mr-1"></i>投稿する</a>
     </li>
+    @endauth
 
+    @auth
     <!-- Dropdown -->
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
@@ -23,14 +29,6 @@
         <i class="fas fa-user-circle"></i>
       </a>
       <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-        <button class="dropdown-item" type="button"
-                onclick="location.href=''">
-          ユーザー登録
-        </button>
-        <button class="dropdown-item" type="button"
-                onclick="location.href=''">
-          ログイン
-        </button>
         <button class="dropdown-item" type="button"
                 onclick="location.href=''">
           投稿する
@@ -45,10 +43,11 @@
         </button>
       </div>
     </li>
-    <form id="logout-button" method="POST" action="">
+    <form id="logout-button" method="POST" action="{{ route('logout') }}">
+      @csrf
     </form>
     <!-- Dropdown -->
-
+    @endauth
   </ul>
 
 </nav>

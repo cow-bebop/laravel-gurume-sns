@@ -10,4 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// 認証系ルーティング
+Auth::routes();
+// トップページ
 Route::get('/', 'ArticleController@index');
