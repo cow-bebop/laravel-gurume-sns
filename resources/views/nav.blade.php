@@ -11,7 +11,7 @@
 
     @guest
     <li class="nav-item d-none d-sm-block">
-      <a class="nav-link" href="">ログイン</a>
+      <a class="nav-link" href="{{ route('login') }}">ログイン</a>
     </li>
     @endguest
 
