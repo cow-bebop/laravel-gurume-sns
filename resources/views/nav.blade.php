@@ -17,11 +17,10 @@
 
     @auth
     <li class="nav-item d-none d-sm-block">
-      <a class="nav-link" href=""><i class="fas fa-pen mr-1"></i>投稿する</a>
+      <a class="nav-link" href="{{ route('articles.create') }}"><i class="fas fa-pen mr-1"></i>投稿する</a>
     </li>
     @endauth
 
-    @auth
     <!-- Dropdown -->
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
@@ -29,8 +28,19 @@
         <i class="fas fa-user-circle"></i>
       </a>
       <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+      @guest
+      <button class="dropdown-item" type="button"
+                onclick="location.href='{{ route('register') }}'">
+                ユーザー登録
+        </button>
         <button class="dropdown-item" type="button"
-                onclick="location.href=''">
+                onclick="location.href='{{ route('login') }}'">
+                ログイン
+        </button>
+        @endguest
+    @auth
+        <button class="dropdown-item" type="button"
+                onclick="location.href='{{ route('articles.create') }}'">
           投稿する
         </button>
         <button class="dropdown-item" type="button"
@@ -41,13 +51,13 @@
         <button form="logout-button" class="dropdown-item" type="submit">
           ログアウト
         </button>
+    @endauth
       </div>
     </li>
     <form id="logout-button" method="POST" action="{{ route('logout') }}">
       @csrf
     </form>
     <!-- Dropdown -->
-    @endauth
   </ul>
 
 </nav>
