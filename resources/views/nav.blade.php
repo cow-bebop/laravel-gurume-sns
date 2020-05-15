@@ -44,7 +44,7 @@
           投稿する
         </button>
         <button class="dropdown-item" type="button"
-                onclick="location.href=''">
+                onclick="location.href='{{ route('users.show', ['name' => Auth::user()->name]) }}'">
           マイページ
         </button>
         <div class="dropdown-divider"></div>
