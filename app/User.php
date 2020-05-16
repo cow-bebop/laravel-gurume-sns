@@ -43,6 +43,12 @@ class User extends Authenticatable
         return $this->belongsToMany('App\User', 'follows', 'followee_id', 'follower_id')->withTimestamps();
     }
 
+    // これからフォローするユーザー、あるいはフォロー中のユーザーのモデルにアクセス可能にするためのリレーションメソッド
+    public function followings(): BelongsToMany
+    {
+        return $this->belongsToMany('App\User', 'follows', 'follower_id', 'followee_id')->withTimestamps();
+    }
+
     public function isFollowedBy(?User $user):bool
     {
         return $user
