@@ -5,7 +5,7 @@
 @section('content')
   @include('nav')
   <div class="container">
-    <div class="card mt-3">
+    <a class="card mt-3">
       <div class="card-body">
         <div class="d-flex flex-row">
           <a href="{{ route('users.show', ['name' => $user->name]) }}" class="text-dark">
@@ -28,16 +28,16 @@
         </h2>
 
       </div>
-      <div class="card-body">
-        <div class="card-text">
+      <a class="card-body">
+        <a class="card-text">
           <a href="" class="text-muted">
             {{ $user->count_followings }} フォロー
           </a>
           <a href="" class="text-muted">
             {{ $user->count_followers }} フォロワー
           </a>
-        </div>
-      </div>
+        </a>
+      </a>
     </div>
   </div>
 @endsection
