@@ -18,6 +18,24 @@ class UserController extends Controller
         ]);
     }
 
+    public function edit(string $name)
+    {
+        $user = User::where('name', $name)->first();
+
+        return view('users.edit', ['user' => $user]);
+    }
+
+    public function update(Request $request, string $name)
+    {
+        $user = User::where('name', $name)->first();
+        $user_image = $request->file->store('public');
+        User::insert([
+            "user_img" => $user_image,
+            "display_name" => $display_name,
+            "profile" => $profile
+        ]);
+    }
+
     public function likes(string $name)
     {
         $user = User::where('name', $name)->first();
