@@ -21,19 +21,31 @@ class UserController extends Controller
     public function edit(string $name)
     {
         $user = User::where('name', $name)->first();
-
         return view('users.edit', ['user' => $user]);
     }
 
     public function update(Request $request, string $name)
     {
         $user = User::where('name', $name)->first();
-        $user_image = $request->file->store('public');
-        User::insert([
-            "user_img" => $user_image,
-            "display_name" => $display_name,
-            "profile" => $profile
-        ]);
+        $articles = $user->articles->sortByDesc('created_at');
+
+        // post送信であればユーザー情報をDBへ保存（要バリデーション）
+        if($request->isMethod('POST')) {
+            // 画像の保存先のパスを指定する
+            $path = $request->file('user_img')->store('public/image');
+            // 画像名にpublic/imageが入っているので取り除く
+            $user->user_img = str_replace('public/image/', '', $path);
+            // そのほかの情報もDBに保存
+            $user->fill($request->all());
+            $user->save();
+
+            return view('users.show', [
+                'user' => $user,
+                'articles' => $articles,
+            ]);
+        }
+        // それ以外のhttpメソッドの場合はユーザー情報編集ページに戻る
+        return view('users.edit');
     }
 
     public function likes(string $name)
