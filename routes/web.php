@@ -12,6 +12,10 @@
 */
 // 認証系ルーティング
 Auth::routes();
+
+// 飲食店検索ページ
+Route::get('/restaurant', 'RestaurantController@index')->name('restaurant.index');
+
 // トップページ
 Route::get('/', 'ArticleController@index')->name('articles.index');
 
