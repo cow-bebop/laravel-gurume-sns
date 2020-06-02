@@ -3,11 +3,15 @@
 /* トップページ
 ===============================================================*/
 
+.user-img img {
+    object-fit: cover;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
 /* マイページ
 ===============================================================*/
-.user-img {
-    width: 80px;
-}
 
 /* ユーザー情報編集ページ
 ===============================================================*/
@@ -18,9 +22,10 @@
 }
 
 .profile-img img {
-    text-align: center;
-    margin: 0 auto;
-    max-width: 100%;
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
 }
 
 .profile-img-input {
