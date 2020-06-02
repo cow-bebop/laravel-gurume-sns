@@ -36,7 +36,9 @@ class UserController extends Controller
             // 画像名にpublic/imageが入っているので取り除く
             $user->user_img = str_replace('public/image/', '', $path);
             // そのほかの情報もDBに保存
-            $user->fill($request->all());
+            $user->display_name = $request->display_name;
+            $user->profile = $request->profile;
+            // $user->fill($request->all());
             $user->save();
 
             return view('users.show', [

@@ -3,7 +3,11 @@
 /* トップページ
 ===============================================================*/
 
-
+/* マイページ
+===============================================================*/
+.user-img {
+    width: 80px;
+}
 
 /* ユーザー情報編集ページ
 ===============================================================*/
@@ -19,14 +23,23 @@
     max-width: 100%;
 }
 
+.profile-img-input {
+    text-align: center;
+}
+
+.profile-img-input input {
+    display: block;
+    width: 100%;
+}
+
 /* フッター
 ===============================================================*/
 .footer {
-  bottom: 0;
-  width: 100%;
-  height: 100px;
-  margin-top: 30px;
-  line-height: 100px;
-  text-align: center;
-  color: #fff;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    margin-top: 30px;
+    line-height: 100px;
+    text-align: center;
+    color: #fff;
 }
