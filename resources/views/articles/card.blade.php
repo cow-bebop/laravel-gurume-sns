@@ -1,19 +1,17 @@
 <div class="card mt-3">
   <div class="card-body d-flex flex-row">
     <a href="{{route('users.show', ['name' => $article->user->name]) }}" class="text-dark">
-      <!-- <i class="fas fa-user-circle fa-3x mr-1"></i> -->
       <div class="user-img">
         <img src="{{ $article->user->user_img ? asset('/storage/image/' . $article->user->user_img) : asset('/storage/image/user_dummy.jpg') }}" class="z-depth-1 rounded-circle" alt="">
       </div>
     </a>
     <div>
-        <div class="ml-4">
+      <div class="ml-4">
         <div class="font-weight-bold">
-        <a href="{{ route('users.show', ['name' => $article->user->name]) }}" class="text-dark">{{ $article->user->display_name ? $article->user->display_name : $article->user->name }}</a>
-      </div>
-      <div class="font-weight-lighter">{{ $article->created_at->format('Y/m/d H:i') }}</div>
+          <a href="{{ route('users.show', ['name' => $article->user->name]) }}" class="text-dark">{{ $article->user->display_name ? $article->user->display_name : $article->user->name }}</a>
         </div>
-
+        <div class="font-weight-lighter">{{ $article->created_at->format('Y/m/d H:i') }}</div>
+    </div>
     </div>
 
   @if( Auth::id() === $article->user_id )
